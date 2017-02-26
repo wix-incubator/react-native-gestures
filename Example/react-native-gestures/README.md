@@ -43,7 +43,7 @@ class Example extends Component {
     console.log(
       'gestureId: ', event.nativeEvent.gestureId, // unique id per gesture
       'action: ', event.nativeEvent.action, // 'start'
-      'scale: ', event.nativeEvent.scale // 1
+      'scale: ', event.nativeEvent.scale
     );
   }
 
