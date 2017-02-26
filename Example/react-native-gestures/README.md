@@ -1,13 +1,13 @@
 
-# react-native-gestures
+# react-native-touch-gestures
 
 ## Getting started
 
-`$ npm install react-native-gestures --save`
+`$ npm install react-native-touch-gestures --save`
 
 ### Mostly automatic installation
 
-`$ react-native link react-native-gestures`
+`$ react-native link react-native-touch-gestures`
 
 ### Manual installation
 
@@ -15,14 +15,14 @@
 #### iOS
 
 1. In XCode, in the project navigator, right click `Libraries` ➜ `Add Files to [your project's name]`
-2. Go to `node_modules` ➜ `react-native-gestures` and add `RNGGestures.xcodeproj`
+2. Go to `node_modules` ➜ `react-native-touch-gestures` and add `RNGGestures.xcodeproj`
 3. In XCode, in the project navigator, select your project. Add `libRNGGestures.a` to your project's `Build Phases` ➜ `Link Binary With Libraries`
 4. Run your project (`Cmd+R`)<
 
 
 ## Usage
 ```javascript
-import Gestures from 'react-native-gestures';
+import Gestures from 'react-native-touch-gestures';
 
 class Example extends Component {
   render() {
