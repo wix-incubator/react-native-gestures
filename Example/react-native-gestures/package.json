@@ -1,6 +1,6 @@
 {
   "name": "react-native-touch-gestures",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Native gesture recognizers in React Native",
   "main": "index.js",
   "scripts": {
