@@ -1,6 +1,8 @@
 
 # react-native-touch-gestures
 
+Native gestures in React Native
+
 ## Getting started
 
 `$ npm install react-native-touch-gestures --save`
@@ -65,3 +67,6 @@ class Example extends Component {
 }
 ```
   
+## Roadmap
+* Add support for Android
+* Add support for more gestures

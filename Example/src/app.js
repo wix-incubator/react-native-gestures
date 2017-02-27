@@ -6,45 +6,42 @@ export default class Example extends Component {
   constructor(props) {
     super(props);
 
-    console.warn("Gestures: ", Gestures);
+    this.state = {
+      baseFontSize: 30,
+      scale: 1
+    };
+
+    this.onPinchUpdate = this.onPinchUpdate.bind(this);
+    this.onPinchFinish = this.onPinchFinish.bind(this);
   }
 
   render() {
     return (
       <View flex={1} justifyContent='center' alignItems='center'>
         <Gestures.Pinch
-            onStart={this.onPinchStart}
-            onChange={this.onPinchChange}
+            onStart={this.onPinchUpdate}
+            onChange={this.onPinchUpdate}
             onFinish={this.onPinchFinish}
         >
-          <Text style={{fontSize: 60}}>Pinch gesture demo</Text>
+          <Text style={{fontSize: this.state.baseFontSize * this.state.scale}}>
+            The fontSize of this text box can be changed with pinch gesture
+          </Text>
         </Gestures.Pinch>
       </View>
     );
   }
 
-  onPinchStart(event) {
-    console.log(
-      'gestureId: ', event.nativeEvent.gestureId,
-      'action: ', event.nativeEvent.action,
-      'scale: ', event.nativeEvent.scale
-    );
-  }
-
-  onPinchChange(event) {
-    console.log(
-      'gestureId: ', event.nativeEvent.gestureId,
-      'action: ', event.nativeEvent.action,
-      'scale: ', event.nativeEvent.scale
-    );
+  onPinchUpdate(event) {
+    this.setState({scale: event.nativeEvent.scale});
   }
 
   onPinchFinish(event) {
-    console.log(
-      'gestureId: ', event.nativeEvent.gestureId,
-      'action: ', event.nativeEvent.action,
-      'scale: ', event.nativeEvent.scale
-    );
+    let newFontSize = this.state.baseFontSize * event.nativeEvent.scale;
+    if(newFontSize < 10) newFontSize = 10;
+    this.setState({
+      baseFontSize: newFontSize,
+      scale: 1
+    });
   }
 }
 

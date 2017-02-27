@@ -1,7 +1,7 @@
 {
   "name": "react-native-touch-gestures",
   "version": "1.0.3",
-  "description": "",
+  "description": "Native gesture recognizers in React Native",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -9,10 +9,22 @@
   "keywords": [
     "react-native"
   ],
-  "author": "",
-  "license": "",
+  "author": "Sergey Ilyevsky <sergeyi@wix.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/wix/react-native-gestures/issues"
+  },
+  "homepage": "https://github.com/wix/react-native-gestures",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/wix/react-native-gestures"
+  },
+  "readme": "",
   "peerDependencies": {
     "react": "~15.4.0",
     "react-native": "0.41.2"
+  },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/"
   }
 }
