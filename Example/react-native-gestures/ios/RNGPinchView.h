@@ -7,7 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+
+#if __has_include("RCTBridgeModule.h")
+#import "RCTComponent.h"
+#else
 #import <React/RCTComponent.h>
+#endif
 
 @interface RNGPinchView : UIView
 
