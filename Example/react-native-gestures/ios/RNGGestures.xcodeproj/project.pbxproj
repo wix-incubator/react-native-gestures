@@ -7,8 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		A7E23F311E5F09E90088ABA9 /* RNGPinchView.m in Sources */ = {isa = PBXBuildFile; fileRef = A7E23F301E5F09E90088ABA9 /* RNGPinchView.m */; };
-		A7E23F341E5F0A110088ABA9 /* RNGPinchManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A7E23F331E5F0A110088ABA9 /* RNGPinchManager.m */; };
+		763CEAD9F7BC99B3E05661FF /* RNGViewManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 763CEED05BA6DA5D82D5E654 /* RNGViewManager.m */; };
+		A7263CEA1E649F0E00C0F7B7 /* RNGSingleton.m in Sources */ = {isa = PBXBuildFile; fileRef = A7263CE91E649F0E00C0F7B7 /* RNGSingleton.m */; };
+		A7263CED1E649F5C00C0F7B7 /* RNGGesturesIdsProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = A7263CEC1E649F5C00C0F7B7 /* RNGGesturesIdsProvider.m */; };
+		A7263CF61E65573D00C0F7B7 /* RNGView.m in Sources */ = {isa = PBXBuildFile; fileRef = A7263CF51E65573D00C0F7B7 /* RNGView.m */; };
 		B3E7B58A1CC2AC0600A0062D /* RNGGestures.m in Sources */ = {isa = PBXBuildFile; fileRef = B3E7B5891CC2AC0600A0062D /* RNGGestures.m */; };
 /* End PBXBuildFile section */
 
@@ -26,9 +28,13 @@
 
 /* Begin PBXFileReference section */
 		134814201AA4EA6300B7C361 /* libRNGGestures.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libRNGGestures.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		A7E23F2F1E5F09E90088ABA9 /* RNGPinchView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RNGPinchView.h; sourceTree = "<group>"; };
-		A7E23F301E5F09E90088ABA9 /* RNGPinchView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNGPinchView.m; sourceTree = "<group>"; };
-		A7E23F331E5F0A110088ABA9 /* RNGPinchManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNGPinchManager.m; sourceTree = "<group>"; };
+		763CEED05BA6DA5D82D5E654 /* RNGViewManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNGViewManager.m; sourceTree = "<group>"; };
+		A7263CE81E649F0E00C0F7B7 /* RNGSingleton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RNGSingleton.h; sourceTree = "<group>"; };
+		A7263CE91E649F0E00C0F7B7 /* RNGSingleton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNGSingleton.m; sourceTree = "<group>"; };
+		A7263CEB1E649F5C00C0F7B7 /* RNGGesturesIdsProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RNGGesturesIdsProvider.h; sourceTree = "<group>"; };
+		A7263CEC1E649F5C00C0F7B7 /* RNGGesturesIdsProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNGGesturesIdsProvider.m; sourceTree = "<group>"; };
+		A7263CF41E65573D00C0F7B7 /* RNGView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RNGView.h; sourceTree = "<group>"; };
+		A7263CF51E65573D00C0F7B7 /* RNGView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNGView.m; sourceTree = "<group>"; };
 		B3E7B5881CC2AC0600A0062D /* RNGGestures.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RNGGestures.h; sourceTree = "<group>"; };
 		B3E7B5891CC2AC0600A0062D /* RNGGestures.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNGGestures.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -55,12 +61,16 @@
 		58B511D21A9E6C8500147676 = {
 			isa = PBXGroup;
 			children = (
+				134814211AA4EA7D00B7C361 /* Products */,
 				B3E7B5881CC2AC0600A0062D /* RNGGestures.h */,
 				B3E7B5891CC2AC0600A0062D /* RNGGestures.m */,
-				A7E23F2F1E5F09E90088ABA9 /* RNGPinchView.h */,
-				A7E23F301E5F09E90088ABA9 /* RNGPinchView.m */,
-				A7E23F331E5F0A110088ABA9 /* RNGPinchManager.m */,
-				134814211AA4EA7D00B7C361 /* Products */,
+				A7263CF41E65573D00C0F7B7 /* RNGView.h */,
+				A7263CF51E65573D00C0F7B7 /* RNGView.m */,
+				A7263CE81E649F0E00C0F7B7 /* RNGSingleton.h */,
+				A7263CE91E649F0E00C0F7B7 /* RNGSingleton.m */,
+				A7263CEB1E649F5C00C0F7B7 /* RNGGesturesIdsProvider.h */,
+				A7263CEC1E649F5C00C0F7B7 /* RNGGesturesIdsProvider.m */,
+				763CEED05BA6DA5D82D5E654 /* RNGViewManager.m */,
 			);
 			sourceTree = "<group>";
 		};
@@ -120,9 +130,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A7E23F341E5F0A110088ABA9 /* RNGPinchManager.m in Sources */,
+				A7263CF61E65573D00C0F7B7 /* RNGView.m in Sources */,
 				B3E7B58A1CC2AC0600A0062D /* RNGGestures.m in Sources */,
-				A7E23F311E5F09E90088ABA9 /* RNGPinchView.m in Sources */,
+				A7263CED1E649F5C00C0F7B7 /* RNGGesturesIdsProvider.m in Sources */,
+				A7263CEA1E649F0E00C0F7B7 /* RNGSingleton.m in Sources */,
+				763CEAD9F7BC99B3E05661FF /* RNGViewManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

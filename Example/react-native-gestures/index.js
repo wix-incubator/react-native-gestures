@@ -1,5 +1,5 @@
-import Pinch from './src/pinch'
+import View from './src/view'
 
 module.exports = {
-  Pinch: Pinch
+  View: View
 }

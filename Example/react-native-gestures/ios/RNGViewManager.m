@@ -1,0 +1,31 @@
+//
+// Created by Sergey Ilyevsky on 28/02/2017.
+// Copyright (c) 2017 Facebook. All rights reserved.
+//
+
+#import "RNGView.h"
+#import "RNGSingleton.h"
+
+#if __has_include("RCTBridgeModule.h")
+#import "RCTViewManager.h"
+#else
+#import <React/RCTViewManager.h>
+#endif
+
+@interface RNGViewManager : RCTViewManager
+@end
+
+@implementation RNGViewManager
+
+RCT_EXPORT_MODULE()
+
+- (UIView *)view
+{
+    return [[RNGView alloc] initWithGesturesIdsProvider:[RNGSingleton sharedInstance].gesturesIdsProvider];
+}
+
+RCT_EXPORT_VIEW_PROPERTY(onPinchAction, RCTBubblingEventBlock)
+RCT_EXPORT_VIEW_PROPERTY(onTapAction, RCTBubblingEventBlock)
+RCT_EXPORT_VIEW_PROPERTY(onPanAction, RCTBubblingEventBlock)
+
+@end

@@ -7,41 +7,81 @@ export default class Example extends Component {
     super(props);
 
     this.state = {
-      baseFontSize: 30,
-      scale: 1
+      baseFontSize: 20,
+      scale: 1,
+      color: 0,
+      baseLeft: 0,
+      baseTop: 0,
+      offsetLeft: 0,
+      offsetTop: 0
     };
 
-    this.onPinchUpdate = this.onPinchUpdate.bind(this);
-    this.onPinchFinish = this.onPinchFinish.bind(this);
+    this.onPinch = this.onPinch.bind(this);
+    this.onTap = this.onTap.bind(this);
+    this.onPan = this.onPan.bind(this);
   }
 
   render() {
     return (
       <View flex={1} justifyContent='center' alignItems='center'>
-        <Gestures.Pinch
-            onStart={this.onPinchUpdate}
-            onChange={this.onPinchUpdate}
-            onFinish={this.onPinchFinish}
+        
+        <Gestures.View
+          onPinchAction={this.onPinch}
+          onTapAction={this.onTap}
+          onPanAction={this.onPan}
+          style={{
+              left: this.state.baseLeft + this.state.offsetLeft,
+              top: this.state.baseTop + this.state.offsetTop,
+              backgroundColor: this.state.color ? 'yellow' : 'cyan'
+          }}
         >
-          <Text style={{fontSize: this.state.baseFontSize * this.state.scale}}>
-            The fontSize of this text box can be changed with pinch gesture
+          <Text style={{
+              fontSize: this.state.baseFontSize * this.state.scale
+            }}>
+            -> pinch to change fontSize{"\n"}
+            -> tap to change bg color{"\n"}
+            -> drag to move
           </Text>
-        </Gestures.Pinch>
+        </Gestures.View>
       </View>
     );
   }
 
-  onPinchUpdate(event) {
-    this.setState({scale: event.nativeEvent.scale});
-  }
+  onPinch(event) {
+    if(event.nativeEvent.action !== 'finish') {
+      this.setState({scale: event.nativeEvent.scale});
+      return;
+    }
 
-  onPinchFinish(event) {
     let newFontSize = this.state.baseFontSize * event.nativeEvent.scale;
     if(newFontSize < 10) newFontSize = 10;
     this.setState({
       baseFontSize: newFontSize,
       scale: 1
     });
+  }
+
+  onTap(event) {
+    this.setState({
+      color: (this.state.color + 1) % 2
+    })
+  }
+
+  onPan(event) {
+    if(event.nativeEvent.action !== 'finish') {
+      this.setState({
+        offsetLeft: event.nativeEvent.x,
+        offsetTop: event.nativeEvent.y
+      });
+      return;
+    }
+
+    this.setState({
+      baseLeft: event.nativeEvent.x + this.state.baseLeft,
+      baseTop: event.nativeEvent.y + this.state.baseTop,
+      offsetLeft: 0,
+      offsetTop: 0
+    })
   }
 }
 
