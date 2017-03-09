@@ -17,7 +17,10 @@
         return;
     }
 
-    self.actionBlock(@{});
+    [self _incrementCurrentGestureId];
+    self.actionBlock(@{
+        @"gestureId": @(self.currentGestureId),
+    });
 }
 
 - (Class)gestureRecognizerClass

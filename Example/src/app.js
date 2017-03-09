@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {AppRegistry, View, Text, Button} from 'react-native';
+import {AppRegistry, View, Text, Image } from 'react-native';
 import Gestures from '../react-native-gestures'; // this is for development only, instead of 'react-native-gestures' because react-native doesn't work with module links
 
 export default class Example extends Component {
@@ -32,9 +32,15 @@ export default class Example extends Component {
           style={{
               left: this.state.baseLeft + this.state.offsetLeft,
               top: this.state.baseTop + this.state.offsetTop,
-              backgroundColor: this.state.color ? 'yellow' : 'cyan'
+              backgroundColor: this.state.color ? 'yellow' : 'cyan',
+              flexDirection: 'row'
           }}
         >
+          <Image
+            style={{width: 100, height: 100}}
+            source={{uri: 'https://facebook.github.io/react/img/logo_og.png'}}
+          />
+          <View style={{width: 10, height: 10}}/>
           <Text style={{
               fontSize: this.state.baseFontSize * this.state.scale
             }}>

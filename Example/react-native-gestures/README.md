@@ -30,10 +30,10 @@ class Example extends Component {
   render() {
     return (
       <View>
-        <Gestures.Pinch // Wrap the view with the Gestures.Pinch view that recognizes pinch
-            onStart={this.onPinchStart}
-            onChange={this.onPinchChange}
-            onFinish={this.onPinchFinish}
+        <Gestures.View // Wrap the view with the Gestures view that recognizes pinch
+          onPinch={this.onPinch}
+          onTap={this.onTap}
+          onPan={this.onPan}
         >
           <Text>hello world</Text>
         </Gestures.Pinch>
@@ -41,27 +41,29 @@ class Example extends Component {
     );
   }
   
-  onPinchStart(event) {
+  onPinch(event) {
     console.log(
+      'onPinch -- ',
       'gestureId: ', event.nativeEvent.gestureId, // unique id per gesture
-      'action: ', event.nativeEvent.action, // 'start'
+      'action: ', event.nativeEvent.action, // 'start' | 'change' | 'finish'
       'scale: ', event.nativeEvent.scale
     );
   }
 
-  onPinchChange(event) {
+  onTap(event) {
     console.log(
-      'gestureId: ', event.nativeEvent.gestureId,
-      'action: ', event.nativeEvent.action, // 'change'
-      'scale: ', event.nativeEvent.scale
+      'onTap -- ',
+      'gestureId: ', event.nativeEvent.gestureId // unique id per gesture
     );
   }
 
-  onPinchFinish(event) {
+  onPan(event) {
     console.log(
-      'gestureId: ', event.nativeEvent.gestureId,
-      'action: ', event.nativeEvent.action, // 'finish'
-      'scale: ', event.nativeEvent.scale
+    'onPan -- ',
+    'gestureId: ', event.nativeEvent.gestureId,
+      'action: ', event.nativeEvent.action, // 'start' | 'change' | 'finish'
+      'x: ', event.nativeEvent.x,
+      'y: ', event.nativeEvent.y
     );
   }
 }
