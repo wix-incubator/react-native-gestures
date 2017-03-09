@@ -12,13 +12,13 @@
 #else
 #import <React/RCTComponent.h>
 #endif
-#import "Gestures/RNGGesture.h"
+#import "RNGGesturesIdsProvider.h"
 
 @interface RNGView : UIView <UIGestureRecognizerDelegate>
 
-@property (nonatomic, copy) RCTBubblingEventBlock onPinchAction;
-@property (nonatomic, copy) RCTBubblingEventBlock onTapAction;
-@property (nonatomic, copy) RCTBubblingEventBlock onPanAction;
+@property (nonatomic, copy) RCTBubblingEventBlock onPinch;
+@property (nonatomic, copy) RCTBubblingEventBlock onTap;
+@property (nonatomic, copy) RCTBubblingEventBlock onPan;
 
 - (instancetype)__unavailable init;
 - (instancetype)initWithGesturesIdsProvider:(RNGGesturesIdsProvider *)gesturesIdsProvider;

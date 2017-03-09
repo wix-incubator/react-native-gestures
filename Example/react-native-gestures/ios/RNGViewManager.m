@@ -24,8 +24,8 @@ RCT_EXPORT_MODULE()
     return [[RNGView alloc] initWithGesturesIdsProvider:[RNGSingleton sharedInstance].gesturesIdsProvider];
 }
 
-RCT_EXPORT_VIEW_PROPERTY(onPinchAction, RCTBubblingEventBlock)
-RCT_EXPORT_VIEW_PROPERTY(onTapAction, RCTBubblingEventBlock)
-RCT_EXPORT_VIEW_PROPERTY(onPanAction, RCTBubblingEventBlock)
+RCT_EXPORT_VIEW_PROPERTY(onPinch, RCTBubblingEventBlock)
+RCT_EXPORT_VIEW_PROPERTY(onTap, RCTBubblingEventBlock)
+RCT_EXPORT_VIEW_PROPERTY(onPan, RCTBubblingEventBlock)
 
 @end

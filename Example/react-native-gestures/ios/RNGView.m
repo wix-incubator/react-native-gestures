@@ -7,7 +7,6 @@
 //
 
 #import "RNGView.h"
-#import "RNGGesturesFactory.h"
 
 @implementation RNGView {
     RNGGesturesIdsProvider *_gesturesIdsProvider;
@@ -31,8 +30,8 @@
     return YES;
 }
 
-- (void)setOnPinchAction:(RCTBubblingEventBlock)onPinchAction {
-    _onPinchAction = [onPinchAction copy];
+- (void)setOnPinch:(RCTBubblingEventBlock)onPinchAction {
+    _onPinch = [onPinchAction copy];
 
     if(_pinchRecognizer) {
         [self removeGestureRecognizer:_pinchRecognizer];
@@ -43,8 +42,8 @@
     [self addGestureRecognizer:_pinchRecognizer];
 }
 
-- (void)setOnTapAction:(RCTBubblingEventBlock)onTapAction {
-    _onTapAction = [onTapAction copy];
+- (void)setOnTap:(RCTBubblingEventBlock)onTapAction {
+    _onTap = [onTapAction copy];
 
     if(_tapRecognizer) {
         [self removeGestureRecognizer:_tapRecognizer];
@@ -55,8 +54,8 @@
     [self addGestureRecognizer:_tapRecognizer];
 }
 
-- (void)setOnPanAction:(RCTBubblingEventBlock)onPanAction {
-    _onPanAction = [onPanAction copy];
+- (void)setOnPan:(RCTBubblingEventBlock)onPanAction {
+    _onPan = [onPanAction copy];
 
     if(_panRecognizer) {
         [self removeGestureRecognizer:_panRecognizer];;
@@ -89,7 +88,7 @@
             return;
     }
 
-    _onPinchAction(@{
+    _onPinch(@{
             @"gestureId": @(_currentPinchGestureId),
             @"action": action,
             @"scale": @(pinchRecognizer.scale)
@@ -102,7 +101,7 @@
         return;
     }
 
-    _onTapAction(@{});
+    _onTap(@{});
 }
 
 - (void)_handlePanGestureRecognizerAction:(UIPanGestureRecognizer *)panRecognizer
@@ -128,7 +127,7 @@
     }
 
     CGPoint point = [panRecognizer translationInView:self];
-    _onPanAction(@{
+    _onPan(@{
             @"gestureId": @(_currentPanGestureId),
             @"action": action,
             @"x": @(point.x),
