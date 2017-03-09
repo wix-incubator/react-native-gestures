@@ -7,7 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		763CE37F901C132D886CC64E /* RNGRecognizerHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 763CE2F627B487CFD902AA62 /* RNGRecognizerHandler.m */; };
+		763CE4FFBC4D2911D8391D77 /* RNGRecognizersConnector.m in Sources */ = {isa = PBXBuildFile; fileRef = 763CE4453329AE419C751EF7 /* RNGRecognizersConnector.m */; };
+		763CE5FC4DC6A1CFCD848A36 /* RNGTapRecognizerHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 763CEA16674A882306F23B33 /* RNGTapRecognizerHandler.m */; };
+		763CE64FBED24A28069FA950 /* RNGPanRecognizerHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 763CEE0FEFE160C72CE0566B /* RNGPanRecognizerHandler.m */; };
 		763CEAD9F7BC99B3E05661FF /* RNGViewManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 763CEED05BA6DA5D82D5E654 /* RNGViewManager.m */; };
+		763CEFE891329645061FC1E3 /* RNGPinchRecognizerHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 763CEA8407D28D5C21452B48 /* RNGPinchRecognizerHandler.m */; };
 		A7263CEA1E649F0E00C0F7B7 /* RNGSingleton.m in Sources */ = {isa = PBXBuildFile; fileRef = A7263CE91E649F0E00C0F7B7 /* RNGSingleton.m */; };
 		A7263CED1E649F5C00C0F7B7 /* RNGGesturesIdsProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = A7263CEC1E649F5C00C0F7B7 /* RNGGesturesIdsProvider.m */; };
 		A7263CF61E65573D00C0F7B7 /* RNGView.m in Sources */ = {isa = PBXBuildFile; fileRef = A7263CF51E65573D00C0F7B7 /* RNGView.m */; };
@@ -28,6 +33,16 @@
 
 /* Begin PBXFileReference section */
 		134814201AA4EA6300B7C361 /* libRNGGestures.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libRNGGestures.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		763CE0ED58E924489E4BF9C3 /* RNGRecognizersConnector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RNGRecognizersConnector.h; sourceTree = "<group>"; };
+		763CE2F627B487CFD902AA62 /* RNGRecognizerHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNGRecognizerHandler.m; sourceTree = "<group>"; };
+		763CE4453329AE419C751EF7 /* RNGRecognizersConnector.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNGRecognizersConnector.m; sourceTree = "<group>"; };
+		763CE78D3F5447CFB8117F9B /* RNGPinchRecognizerHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RNGPinchRecognizerHandler.h; sourceTree = "<group>"; };
+		763CE85B7E7B20EDAA965095 /* RNGTapRecognizerHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RNGTapRecognizerHandler.h; sourceTree = "<group>"; };
+		763CEA16674A882306F23B33 /* RNGTapRecognizerHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNGTapRecognizerHandler.m; sourceTree = "<group>"; };
+		763CEA75A5F1F20317874BC1 /* RNGRecognizerHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RNGRecognizerHandler.h; sourceTree = "<group>"; };
+		763CEA8407D28D5C21452B48 /* RNGPinchRecognizerHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNGPinchRecognizerHandler.m; sourceTree = "<group>"; };
+		763CEB02B53AD69A1D525B57 /* RNGPanRecognizerHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RNGPanRecognizerHandler.h; sourceTree = "<group>"; };
+		763CEE0FEFE160C72CE0566B /* RNGPanRecognizerHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNGPanRecognizerHandler.m; sourceTree = "<group>"; };
 		763CEED05BA6DA5D82D5E654 /* RNGViewManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNGViewManager.m; sourceTree = "<group>"; };
 		A7263CE81E649F0E00C0F7B7 /* RNGSingleton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RNGSingleton.h; sourceTree = "<group>"; };
 		A7263CE91E649F0E00C0F7B7 /* RNGSingleton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNGSingleton.m; sourceTree = "<group>"; };
@@ -71,7 +86,25 @@
 				A7263CEB1E649F5C00C0F7B7 /* RNGGesturesIdsProvider.h */,
 				A7263CEC1E649F5C00C0F7B7 /* RNGGesturesIdsProvider.m */,
 				763CEED05BA6DA5D82D5E654 /* RNGViewManager.m */,
+				763CE4453329AE419C751EF7 /* RNGRecognizersConnector.m */,
+				763CE0ED58E924489E4BF9C3 /* RNGRecognizersConnector.h */,
+				763CEB9725B7B13BB6403C6E /* RecognizerHandlers */,
 			);
+			sourceTree = "<group>";
+		};
+		763CEB9725B7B13BB6403C6E /* RecognizerHandlers */ = {
+			isa = PBXGroup;
+			children = (
+				763CEA16674A882306F23B33 /* RNGTapRecognizerHandler.m */,
+				763CE85B7E7B20EDAA965095 /* RNGTapRecognizerHandler.h */,
+				763CEE0FEFE160C72CE0566B /* RNGPanRecognizerHandler.m */,
+				763CEB02B53AD69A1D525B57 /* RNGPanRecognizerHandler.h */,
+				763CEA8407D28D5C21452B48 /* RNGPinchRecognizerHandler.m */,
+				763CE78D3F5447CFB8117F9B /* RNGPinchRecognizerHandler.h */,
+				763CE2F627B487CFD902AA62 /* RNGRecognizerHandler.m */,
+				763CEA75A5F1F20317874BC1 /* RNGRecognizerHandler.h */,
+			);
+			path = RecognizerHandlers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -135,6 +168,11 @@
 				A7263CED1E649F5C00C0F7B7 /* RNGGesturesIdsProvider.m in Sources */,
 				A7263CEA1E649F0E00C0F7B7 /* RNGSingleton.m in Sources */,
 				763CEAD9F7BC99B3E05661FF /* RNGViewManager.m in Sources */,
+				763CE4FFBC4D2911D8391D77 /* RNGRecognizersConnector.m in Sources */,
+				763CE5FC4DC6A1CFCD848A36 /* RNGTapRecognizerHandler.m in Sources */,
+				763CE64FBED24A28069FA950 /* RNGPanRecognizerHandler.m in Sources */,
+				763CEFE891329645061FC1E3 /* RNGPinchRecognizerHandler.m in Sources */,
+				763CE37F901C132D886CC64E /* RNGRecognizerHandler.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
