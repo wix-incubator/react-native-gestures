@@ -26,9 +26,9 @@ export default class Example extends Component {
       <View flex={1} justifyContent='center' alignItems='center'>
         
         <Gestures.View
-          onPinchAction={this.onPinch}
-          onTapAction={this.onTap}
-          onPanAction={this.onPan}
+          onPinch={this.onPinch}
+          onTap={this.onTap}
+          onPan={this.onPan}
           style={{
               left: this.state.baseLeft + this.state.offsetLeft,
               top: this.state.baseTop + this.state.offsetTop,
