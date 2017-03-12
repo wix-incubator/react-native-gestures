@@ -24,7 +24,6 @@ export default class Example extends Component {
   render() {
     return (
       <View flex={1} justifyContent='center' alignItems='center'>
-        
         <Gestures.View
           onPinch={this.onPinch}
           onTap={this.onTap}

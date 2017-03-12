@@ -4,7 +4,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#if __has_include(<React/RCTComponent.h>)
 #import <React/RCTComponent.h>
+#else
+#import "RCTComponent.h"
+#endif
 
 @class RNGGesturesIdsProvider;
 

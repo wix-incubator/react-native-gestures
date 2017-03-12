@@ -6,10 +6,10 @@
 #import "RNGView.h"
 #import "RNGSingleton.h"
 
-#if __has_include("RCTBridgeModule.h")
-#import "RCTViewManager.h"
-#else
+#if __has_include(<React/RCTViewManager.h>)
 #import <React/RCTViewManager.h>
+#else
+#import "RCTViewManager.h"
 #endif
 
 @interface RNGViewManager : RCTViewManager

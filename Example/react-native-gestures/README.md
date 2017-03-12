@@ -36,7 +36,7 @@ class Example extends Component {
           onPan={this.onPan}
         >
           <Text>hello world</Text>
-        </Gestures.Pinch>
+        </Gestures.View>
       </View>
     );
   }
