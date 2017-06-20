@@ -14,7 +14,7 @@
 
 
 @interface RNGRecognizerHandler : NSObject
-- (instancetype)initWithActionBlock:(RCTBubblingEventBlock)actionBlock view:(UIView *)view;
+- (instancetype)initWithActionBlock:(RCTBubblingEventBlock)actionBlock;
 - (Class)gestureRecognizerClass;
 - (void)handleRecognizerAction:(UIGestureRecognizer *)recognizer;
 - (void)_incrementCurrentGestureId;

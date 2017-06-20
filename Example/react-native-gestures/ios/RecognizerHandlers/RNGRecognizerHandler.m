@@ -11,11 +11,10 @@
 
 }
 
-- (instancetype)initWithActionBlock:(RCTBubblingEventBlock)actionBlock view:(UIView *)view {
+- (instancetype)initWithActionBlock:(RCTBubblingEventBlock)actionBlock {
     self = [super init];
     if (self) {
         _actionBlock = [actionBlock copy];
-        _view = view;
         _gestureRecognizer = [(UIGestureRecognizer *)[[self gestureRecognizerClass] alloc] initWithTarget:self action:@selector(handleRecognizerAction: )];
     }
 

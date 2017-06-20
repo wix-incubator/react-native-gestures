@@ -20,7 +20,7 @@ typedef enum {
 
 @interface RNGRecognizersConnector : NSObject
 
--(instancetype) __unavailable init;
+- (instancetype) __unavailable init;
 - (instancetype)initWithGesturesIdsProvider:(RNGGesturesIdsProvider *)gesturesIdsProvider view:(UIView *)view;
 
 - (void)setEventBlock:(RCTBubblingEventBlock)block forGestureId:(RNGRecognizersConnector_gestureId)gestureId;

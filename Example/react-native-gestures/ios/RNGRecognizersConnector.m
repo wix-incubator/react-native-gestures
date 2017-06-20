@@ -49,7 +49,7 @@
         [_view removeGestureRecognizer:oldHandler.gestureRecognizer];
     }
 
-    RNGRecognizerHandler *handler = [(RNGRecognizerHandler *) [[self _classForGestureId:gestureId] alloc] initWithActionBlock:block view:nil];
+    RNGRecognizerHandler *handler = [(RNGRecognizerHandler *) [[self _classForGestureId:gestureId] alloc] initWithActionBlock:block];
     _handlers[@(gestureId)] = handler;
     handler.gestureRecognizer.delegate = _view;
     [_view addGestureRecognizer:handler.gestureRecognizer];

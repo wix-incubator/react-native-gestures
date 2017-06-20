@@ -22,8 +22,20 @@
     return self;
 }
 
+
 - (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer {
     return YES;
+}
+
+- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldBeRequiredToFailByGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer {
+    if([otherGestureRecognizer.view isKindOfClass:[RNGView class]] &&
+       otherGestureRecognizer.view != gestureRecognizer.view &&
+       [gestureRecognizer.view isDescendantOfView:otherGestureRecognizer.view]) {
+        return YES;
+    }
+    
+    return NO;
+    
 }
 
 - (RCTBubblingEventBlock)onTap {

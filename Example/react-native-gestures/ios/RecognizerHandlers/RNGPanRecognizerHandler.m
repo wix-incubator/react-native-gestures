@@ -38,7 +38,7 @@
             return;
     }
 
-    CGPoint point = [panRecognizer translationInView:self.view];
+    CGPoint point = [panRecognizer translationInView:recognizer.view];
     self.actionBlock(@{
             @"gestureId": @(self.currentGestureId),
             @"action": action,
