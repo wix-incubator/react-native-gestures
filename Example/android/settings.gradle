@@ -1,3 +1,6 @@
 rootProject.name = 'Example'
 
 include ':app'
+
+include ':react-native-gestures'
+project(':react-native-gestures').projectDir = new File(rootProject.projectDir, '../react-native-gestures/android')

@@ -29,12 +29,13 @@ class Example extends Component {
           _.map(screens, (screen) => {
             let name = screen.name;
             return (
-              <Button
-                key={name}
-                title={name}
-                testId={name}
-                onPress={() => this.setState({currentScreen: screen})}
-              />
+              <View style={{padding:20}} key={name}>
+                <Button
+                  title={name}
+                  testId={name}
+                  onPress={() => this.setState({currentScreen: screen})}
+                />
+              </View>
             );
           })
         }

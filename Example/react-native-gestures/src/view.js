@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Text, View } from 'react-native';
+import { Text, View, ViewPropTypes } from 'react-native';
 import { requireNativeComponent } from 'react-native';
 
 export default class GesturesView extends Component {
@@ -17,6 +17,7 @@ export default class GesturesView extends Component {
 }
 
 GesturesView.propTypes = {
+  ...ViewPropTypes,
   onPinch: React.PropTypes.func,
   onTap: React.PropTypes.func,
   onPan: React.PropTypes.func
