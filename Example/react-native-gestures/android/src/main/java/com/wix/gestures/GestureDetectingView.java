@@ -5,13 +5,21 @@ import android.view.GestureDetector;
 import android.view.GestureDetector.OnGestureListener;
 import android.view.MotionEvent;
 
+import com.facebook.react.bridge.Arguments;
 import com.facebook.react.bridge.ReactContext;
+import com.facebook.react.bridge.WritableMap;
 import com.facebook.react.uimanager.events.RCTEventEmitter;
 import com.facebook.react.views.view.ReactViewGroup;
 
 public class GestureDetectingView extends ReactViewGroup implements OnGestureListener {
 
   private GestureDetector mSimpleGestureDetector;
+  private boolean mIsScrolling = false;
+  private float mCurrentPanX;
+  private float mCurrentPanY;
+  private float mScrollStartX;
+  private float mScrollStartY;
+  private float mScreenDensity;
 
   public GestureDetectingView(Context context) {
     super(context);
@@ -20,11 +28,17 @@ public class GestureDetectingView extends ReactViewGroup implements OnGestureLis
 
   private void init(Context context) {
     mSimpleGestureDetector = new GestureDetector(context, this);
+    mScreenDensity = getResources().getDisplayMetrics().density;
   }
 
   @Override
   public boolean onTouchEvent(MotionEvent event) {
-    return mSimpleGestureDetector.onTouchEvent(event);
+    boolean isConsumed = mSimpleGestureDetector.onTouchEvent(event);
+    if (mIsScrolling && event.getAction() == MotionEvent.ACTION_UP) {
+      mIsScrolling = false;
+      emitPan("finish");
+    }
+    return isConsumed;
   }
 
   @Override
@@ -45,7 +59,21 @@ public class GestureDetectingView extends ReactViewGroup implements OnGestureLis
 
   @Override
   public boolean onScroll(MotionEvent e1, MotionEvent e2, float distanceX, float distanceY) {
-    return false;
+    String action = mIsScrolling ? "start" : "change";
+    if (!mIsScrolling) {
+      mIsScrolling = true;
+      mScrollStartX = getX();
+      mScrollStartY = getY();
+    }
+
+    // The position of this view may change when responding to onPan event and pan arguments have
+    // to be adjusted.
+    mCurrentPanX = ( e2.getX() - e1.getX() + getX() - mScrollStartX ) / mScreenDensity;
+    mCurrentPanY = ( e2.getY() - e1.getY() + getY() - mScrollStartY ) / mScreenDensity;
+
+    emitPan(action);
+
+    return true;
   }
 
   @Override
@@ -55,5 +83,15 @@ public class GestureDetectingView extends ReactViewGroup implements OnGestureLis
   @Override
   public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX, float velocityY) {
     return false;
+  }
+
+  private void emitPan(String action) {
+    WritableMap args = Arguments.createMap();
+    args.putString("action", action);
+    args.putDouble("x", mCurrentPanX);
+    args.putDouble("y", mCurrentPanY);
+
+    ReactContext reactContext = (ReactContext) getContext();
+    reactContext.getJSModule(RCTEventEmitter.class).receiveEvent(getId(), "onPan", args);
   }
 }

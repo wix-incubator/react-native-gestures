@@ -10,7 +10,7 @@ export default class DifferentGestureOnSameView extends Component {
       baseFontSize: 20,
       scale: 1,
       color: 0,
-      baseLeft: 0,
+      baseLeft: 10,
       baseTop: 0,
       offsetLeft: 0,
       offsetTop: 0

@@ -27,6 +27,7 @@ public class GestureViewManager extends ViewGroupManager<GestureDetectingView> {
   public Map<String, Object> getExportedCustomDirectEventTypeConstants() {
     return MapBuilder.<String, Object>builder()
         .put("onTap", MapBuilder.of("registrationName", "onTap"))
+        .put("onPan", MapBuilder.of("registrationName", "onPan"))
         .build();
   }
 }
