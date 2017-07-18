@@ -1,6 +1,7 @@
 package com.wix.gestures;
 
 import android.content.Context;
+import android.support.v4.view.MotionEventCompat;
 import android.view.GestureDetector;
 import android.view.GestureDetector.OnGestureListener;
 import android.view.MotionEvent;
@@ -15,6 +16,8 @@ public class GestureDetectingView extends ReactViewGroup implements OnGestureLis
 
   private GestureDetector mSimpleGestureDetector;
   private boolean mIsScrolling = false;
+  private boolean mIsDetectorEnabled = true;
+  private boolean mCanInterceptTouches = true;
   private float mCurrentPanX;
   private float mCurrentPanY;
   private float mScrollStartX;
@@ -34,11 +37,67 @@ public class GestureDetectingView extends ReactViewGroup implements OnGestureLis
   @Override
   public boolean onTouchEvent(MotionEvent event) {
     boolean isConsumed = mSimpleGestureDetector.onTouchEvent(event);
-    if (mIsScrolling && event.getAction() == MotionEvent.ACTION_UP) {
+
+    final int action = MotionEventCompat.getActionMasked(event);
+    boolean gestureEnded = action == MotionEvent.ACTION_CANCEL || action == MotionEvent.ACTION_UP;
+
+    if (gestureEnded && mIsScrolling) {
       mIsScrolling = false;
       emitPan("finish");
     }
+
     return isConsumed;
+  }
+
+  @Override
+  public void requestDisallowInterceptTouchEvent(boolean disallowIntercept) {
+    super.requestDisallowInterceptTouchEvent(disallowIntercept);
+    mCanInterceptTouches = false;
+  }
+
+  @Override
+  public boolean dispatchTouchEvent(MotionEvent event) {
+    mCanInterceptTouches = true;
+    boolean wasConsumed = super.dispatchTouchEvent(event);
+    if (mCanInterceptTouches) {
+      // this ensures that the GestureDetectingView that is deepest in hierarchy handles the gesture
+      getParent().requestDisallowInterceptTouchEvent(true);
+      wasConsumed = true;
+    }
+    else {
+      mIsDetectorEnabled = false;
+      // cancel gesture handling
+      int originalAction = event.getAction();
+      event.setAction(MotionEvent.ACTION_CANCEL);
+      mSimpleGestureDetector.onTouchEvent(event);
+      event.setAction(originalAction);
+    }
+
+    final int action = MotionEventCompat.getActionMasked(event);
+    boolean gestureEnded = action == MotionEvent.ACTION_CANCEL || action == MotionEvent.ACTION_UP;
+
+    if (gestureEnded) {
+      mIsDetectorEnabled = true;
+    }
+
+    return wasConsumed;
+  }
+
+  @Override
+  public boolean onInterceptTouchEvent(MotionEvent event) {
+    if (!mIsDetectorEnabled) {
+      return false;
+    }
+
+    final int action = MotionEventCompat.getActionMasked(event);
+    boolean gestureStart = action == MotionEvent.ACTION_DOWN;
+    if (gestureStart) {
+      // return false, meaning that onTouchEvent will not be called, but start handling gesture
+      // anyway, will cancel if needed
+      onTouchEvent(event);
+      return false;
+    }
+    return true;
   }
 
   @Override
