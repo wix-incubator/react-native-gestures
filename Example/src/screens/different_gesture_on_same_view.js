@@ -39,8 +39,9 @@ export default class DifferentGestureOnSameView extends Component {
             style={{width: 100, height: 100}}
             source={{uri: 'https://facebook.github.io/react/img/logo_og.png'}}
           />
-          <View style={{width: 10, height: 10}}/>
           <Text style={{
+              flex:1,
+              margin: 10,
               fontSize: this.state.baseFontSize * this.state.scale
             }}>
             -> pinch to change fontSize{"\n"}
