@@ -28,6 +28,7 @@ public class GestureViewManager extends ViewGroupManager<GestureDetectingView> {
     return MapBuilder.<String, Object>builder()
         .put("onTap", MapBuilder.of("registrationName", "onTap"))
         .put("onPan", MapBuilder.of("registrationName", "onPan"))
+        .put("onPinch", MapBuilder.of("registrationName", "onPinch"))
         .build();
   }
 }

@@ -2,9 +2,11 @@ package com.wix.gestures;
 
 import android.content.Context;
 import android.support.v4.view.MotionEventCompat;
+import android.support.v4.view.ScaleGestureDetectorCompat;
 import android.view.GestureDetector;
 import android.view.GestureDetector.OnGestureListener;
 import android.view.MotionEvent;
+import android.view.ScaleGestureDetector;
 
 import com.facebook.react.bridge.Arguments;
 import com.facebook.react.bridge.ReactContext;
@@ -12,16 +14,19 @@ import com.facebook.react.bridge.WritableMap;
 import com.facebook.react.uimanager.events.RCTEventEmitter;
 import com.facebook.react.views.view.ReactViewGroup;
 
-public class GestureDetectingView extends ReactViewGroup implements OnGestureListener {
+public class GestureDetectingView extends ReactViewGroup implements OnGestureListener, ScaleGestureDetector.OnScaleGestureListener {
 
   private GestureDetector mSimpleGestureDetector;
+  private ScaleGestureDetector mScaleGestureDetector;
   private boolean mIsScrolling = false;
   private boolean mIsDetectorEnabled = true;
   private boolean mCanInterceptTouches = true;
   private float mCurrentPanX;
   private float mCurrentPanY;
+  private float mCurrentScale;
   private float mScrollStartX;
   private float mScrollStartY;
+  private float mScaleStartSpan;
   private float mScreenDensity;
 
   public GestureDetectingView(Context context) {
@@ -31,11 +36,14 @@ public class GestureDetectingView extends ReactViewGroup implements OnGestureLis
 
   private void init(Context context) {
     mSimpleGestureDetector = new GestureDetector(context, this);
+    mScaleGestureDetector = new ScaleGestureDetector(context, this);
+    ScaleGestureDetectorCompat.setQuickScaleEnabled(mScaleGestureDetector, false);
     mScreenDensity = getResources().getDisplayMetrics().density;
   }
 
   @Override
   public boolean onTouchEvent(MotionEvent event) {
+    mScaleGestureDetector.onTouchEvent(event);
     boolean isConsumed = mSimpleGestureDetector.onTouchEvent(event);
 
     final int action = MotionEventCompat.getActionMasked(event);
@@ -118,7 +126,7 @@ public class GestureDetectingView extends ReactViewGroup implements OnGestureLis
 
   @Override
   public boolean onScroll(MotionEvent e1, MotionEvent e2, float distanceX, float distanceY) {
-    String action = mIsScrolling ? "start" : "change";
+    String action = mIsScrolling ? "change" : "start";
     if (!mIsScrolling) {
       mIsScrolling = true;
       mScrollStartX = getX();
@@ -144,6 +152,26 @@ public class GestureDetectingView extends ReactViewGroup implements OnGestureLis
     return false;
   }
 
+  @Override
+  public boolean onScaleBegin(ScaleGestureDetector detector) {
+    mScaleStartSpan = detector.getCurrentSpan();
+    mCurrentScale = 1;
+    emitPinch("start");
+    return true;
+  }
+
+  @Override
+  public boolean onScale(ScaleGestureDetector detector) {
+    mCurrentScale = detector.getCurrentSpan() / mScaleStartSpan;
+    emitPinch("change");
+    return true;
+  }
+
+  @Override
+  public void onScaleEnd(ScaleGestureDetector detector) {
+    emitPinch("finish");
+  }
+
   private void emitPan(String action) {
     WritableMap args = Arguments.createMap();
     args.putString("action", action);
@@ -152,5 +180,14 @@ public class GestureDetectingView extends ReactViewGroup implements OnGestureLis
 
     ReactContext reactContext = (ReactContext) getContext();
     reactContext.getJSModule(RCTEventEmitter.class).receiveEvent(getId(), "onPan", args);
+  }
+
+  private void emitPinch(String action) {
+    WritableMap args = Arguments.createMap();
+    args.putString("action", action);
+    args.putDouble("scale", mCurrentScale);
+
+    ReactContext reactContext = (ReactContext) getContext();
+    reactContext.getJSModule(RCTEventEmitter.class).receiveEvent(getId(), "onPinch", args);
   }
 }
