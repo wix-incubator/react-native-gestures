@@ -13,26 +13,32 @@ export default class DifferentGestureOnSameView extends Component {
       baseLeft: 10,
       baseTop: 0,
       offsetLeft: 0,
-      offsetTop: 0
+      offsetTop: 0,
+      baseRotation: 0,
+      offsetRotation: 0
     };
 
     this.onPinch = this.onPinch.bind(this);
     this.onTap = this.onTap.bind(this);
     this.onPan = this.onPan.bind(this);
+    this.onRotation = this.onRotation.bind(this);
   }
 
   render() {
+    console.log(`In render: state: ${JSON.stringify(this.state)}`);
     return (
       <View flex={1} justifyContent='center' alignItems='center'>
         <Gestures.View
           onPinch={this.onPinch}
           onTap={this.onTap}
           onPan={this.onPan}
+          onRotation={this.onRotation}
           style={{
               left: this.state.baseLeft + this.state.offsetLeft,
               top: this.state.baseTop + this.state.offsetTop,
               backgroundColor: this.state.color ? 'yellow' : 'cyan',
-              flexDirection: 'row'
+              flexDirection: 'row',
+              transform: [{rotate: `${this.state.baseRotation + this.state.offsetRotation} rad`}]
           }}
         >
           <Image
@@ -44,9 +50,10 @@ export default class DifferentGestureOnSameView extends Component {
               margin: 10,
               fontSize: this.state.baseFontSize * this.state.scale
             }}>
-            -> pinch to change fontSize{"\n"}
-            -> tap to change bg color{"\n"}
-            -> drag to move
+            -> pinch to change fontSize{'\n'}
+            -> tap to change bg color{'\n'}
+            -> drag to move{'\n'}
+            -> rotate to rotate
           </Text>
         </Gestures.View>
       </View>
@@ -87,6 +94,18 @@ export default class DifferentGestureOnSameView extends Component {
       baseTop: event.nativeEvent.y + this.state.baseTop,
       offsetLeft: 0,
       offsetTop: 0
+    })
+  }
+
+  onRotation(event) {
+    if(event.nativeEvent.action !== 'finish') {
+      this.setState({offsetRotation: event.nativeEvent.rotation});
+      return;
+    }
+
+    this.setState({
+      baseRotation: this.state.baseRotation + event.nativeEvent.rotation,
+      offsetRotation: 0
     })
   }
 }

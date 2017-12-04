@@ -16,6 +16,7 @@
 		A7263CEA1E649F0E00C0F7B7 /* RNGSingleton.m in Sources */ = {isa = PBXBuildFile; fileRef = A7263CE91E649F0E00C0F7B7 /* RNGSingleton.m */; };
 		A7263CED1E649F5C00C0F7B7 /* RNGGesturesIdsProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = A7263CEC1E649F5C00C0F7B7 /* RNGGesturesIdsProvider.m */; };
 		A7263CF61E65573D00C0F7B7 /* RNGView.m in Sources */ = {isa = PBXBuildFile; fileRef = A7263CF51E65573D00C0F7B7 /* RNGView.m */; };
+		A7AA21671FD52F4400CC6F3B /* RNGRotationRecognizerHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = A7AA21661FD52F4400CC6F3B /* RNGRotationRecognizerHandler.m */; };
 		B3E7B58A1CC2AC0600A0062D /* RNGGestures.m in Sources */ = {isa = PBXBuildFile; fileRef = B3E7B5891CC2AC0600A0062D /* RNGGestures.m */; };
 /* End PBXBuildFile section */
 
@@ -50,6 +51,8 @@
 		A7263CEC1E649F5C00C0F7B7 /* RNGGesturesIdsProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNGGesturesIdsProvider.m; sourceTree = "<group>"; };
 		A7263CF41E65573D00C0F7B7 /* RNGView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RNGView.h; sourceTree = "<group>"; };
 		A7263CF51E65573D00C0F7B7 /* RNGView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNGView.m; sourceTree = "<group>"; };
+		A7AA21651FD52F4400CC6F3B /* RNGRotationRecognizerHandler.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RNGRotationRecognizerHandler.h; sourceTree = "<group>"; };
+		A7AA21661FD52F4400CC6F3B /* RNGRotationRecognizerHandler.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RNGRotationRecognizerHandler.m; sourceTree = "<group>"; };
 		B3E7B5881CC2AC0600A0062D /* RNGGestures.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RNGGestures.h; sourceTree = "<group>"; };
 		B3E7B5891CC2AC0600A0062D /* RNGGestures.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNGGestures.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -101,6 +104,8 @@
 				763CEB02B53AD69A1D525B57 /* RNGPanRecognizerHandler.h */,
 				763CEA8407D28D5C21452B48 /* RNGPinchRecognizerHandler.m */,
 				763CE78D3F5447CFB8117F9B /* RNGPinchRecognizerHandler.h */,
+				A7AA21651FD52F4400CC6F3B /* RNGRotationRecognizerHandler.h */,
+				A7AA21661FD52F4400CC6F3B /* RNGRotationRecognizerHandler.m */,
 				763CE2F627B487CFD902AA62 /* RNGRecognizerHandler.m */,
 				763CEA75A5F1F20317874BC1 /* RNGRecognizerHandler.h */,
 			);
@@ -168,6 +173,7 @@
 				A7263CED1E649F5C00C0F7B7 /* RNGGesturesIdsProvider.m in Sources */,
 				A7263CEA1E649F0E00C0F7B7 /* RNGSingleton.m in Sources */,
 				763CEAD9F7BC99B3E05661FF /* RNGViewManager.m in Sources */,
+				A7AA21671FD52F4400CC6F3B /* RNGRotationRecognizerHandler.m in Sources */,
 				763CE4FFBC4D2911D8391D77 /* RNGRecognizersConnector.m in Sources */,
 				763CE5FC4DC6A1CFCD848A36 /* RNGTapRecognizerHandler.m in Sources */,
 				763CE64FBED24A28069FA950 /* RNGPanRecognizerHandler.m in Sources */,

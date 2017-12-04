@@ -15,7 +15,8 @@
 typedef enum {
     RNGRecognizersConnector_gestureId_pinch,
     RNGRecognizersConnector_gestureId_tap,
-    RNGRecognizersConnector_gestureId_pan
+    RNGRecognizersConnector_gestureId_pan,
+    RNGRecognizersConnector_gestureId_rotation
 } RNGRecognizersConnector_gestureId;
 
 @interface RNGRecognizersConnector : NSObject

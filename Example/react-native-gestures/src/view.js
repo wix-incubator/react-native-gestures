@@ -20,7 +20,8 @@ GesturesView.propTypes = {
   ...ViewPropTypes,
   onPinch: React.PropTypes.func,
   onTap: React.PropTypes.func,
-  onPan: React.PropTypes.func
+  onPan: React.PropTypes.func,
+  onRotation: React.PropTypes.func
 };
 
 const NativeView = requireNativeComponent('RNGView', GesturesView);

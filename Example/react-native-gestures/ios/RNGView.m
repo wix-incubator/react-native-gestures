@@ -38,25 +38,32 @@
     
 }
 
-- (RCTBubblingEventBlock)onTap {
+- (RCTDirectEventBlock)onTap {
     return [_recognizersConnector eventBlockForGestureId:RNGRecognizersConnector_gestureId_tap];
 }
-- (void)setOnTap:(RCTBubblingEventBlock)onTapAction {
+- (void)setOnTap:(RCTDirectEventBlock)onTapAction {
     [_recognizersConnector setEventBlock:onTapAction forGestureId:RNGRecognizersConnector_gestureId_tap];
 }
 
-- (RCTBubblingEventBlock)onPan {
+- (RCTDirectEventBlock)onPan {
     return [_recognizersConnector eventBlockForGestureId:RNGRecognizersConnector_gestureId_pan];
 }
-- (void)setOnPan:(RCTBubblingEventBlock)onPanAction {
+- (void)setOnPan:(RCTDirectEventBlock)onPanAction {
     [_recognizersConnector setEventBlock:onPanAction forGestureId:RNGRecognizersConnector_gestureId_pan];
 }
 
-- (RCTBubblingEventBlock)onPinch {
+- (RCTDirectEventBlock)onPinch {
     return [_recognizersConnector eventBlockForGestureId:RNGRecognizersConnector_gestureId_pinch];
 }
-- (void)setOnPinch:(RCTBubblingEventBlock)onPinchAction {
+- (void)setOnPinch:(RCTDirectEventBlock)onPinchAction {
     [_recognizersConnector setEventBlock:onPinchAction forGestureId:RNGRecognizersConnector_gestureId_pinch];
+}
+
+- (RCTDirectEventBlock)onRotation {
+    return [_recognizersConnector eventBlockForGestureId:RNGRecognizersConnector_gestureId_rotation];
+}
+- (void)setOnRotation:(RCTDirectEventBlock)onRotationAction {
+    return [_recognizersConnector setEventBlock:onRotationAction forGestureId:RNGRecognizersConnector_gestureId_rotation];
 }
 
 @end

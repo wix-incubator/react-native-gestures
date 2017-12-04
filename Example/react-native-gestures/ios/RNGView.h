@@ -16,9 +16,10 @@
 
 @interface RNGView : UIView <UIGestureRecognizerDelegate>
 
-@property (nonatomic, copy) RCTBubblingEventBlock onPinch;
-@property (nonatomic, copy) RCTBubblingEventBlock onTap;
-@property (nonatomic, copy) RCTBubblingEventBlock onPan;
+@property (nonatomic, copy) RCTDirectEventBlock onPinch;
+@property (nonatomic, copy) RCTDirectEventBlock onTap;
+@property (nonatomic, copy) RCTDirectEventBlock onPan;
+@property (nonatomic, copy) RCTDirectEventBlock onRotation;
 
 - (instancetype)__unavailable init;
 - (instancetype)initWithGesturesIdsProvider:(RNGGesturesIdsProvider *)gesturesIdsProvider;

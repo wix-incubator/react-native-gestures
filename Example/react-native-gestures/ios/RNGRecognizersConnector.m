@@ -9,6 +9,7 @@
 #import "RNGPinchRecognizerHandler.h"
 #import "RNGTapRecognizerHandler.h"
 #import "RNGPanRecognizerHandler.h"
+#import "RNGRotationRecognizerHandler.h"
 
 
 @implementation RNGRecognizersConnector {
@@ -37,6 +38,8 @@
             return [RNGTapRecognizerHandler class];
         case RNGRecognizersConnector_gestureId_pan:
             return [RNGPanRecognizerHandler class];
+        case RNGRecognizersConnector_gestureId_rotation:
+            return [RNGRotationRecognizerHandler class];
     }
 
     return nil;

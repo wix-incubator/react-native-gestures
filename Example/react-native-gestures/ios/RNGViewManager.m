@@ -27,5 +27,6 @@ RCT_EXPORT_MODULE()
 RCT_EXPORT_VIEW_PROPERTY(onPinch, RCTDirectEventBlock)
 RCT_EXPORT_VIEW_PROPERTY(onTap, RCTDirectEventBlock)
 RCT_EXPORT_VIEW_PROPERTY(onPan, RCTDirectEventBlock)
+RCT_EXPORT_VIEW_PROPERTY(onRotation, RCTDirectEventBlock)
 
 @end
