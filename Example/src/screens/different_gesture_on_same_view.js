@@ -7,7 +7,7 @@ export default class DifferentGestureOnSameView extends Component {
     super(props);
 
     this.state = {
-      baseFontSize: 20,
+      baseFontSize: 16,
       scale: 1,
       color: 0,
       baseLeft: 10,
@@ -25,36 +25,40 @@ export default class DifferentGestureOnSameView extends Component {
   }
 
   render() {
-    console.log(`In render: state: ${JSON.stringify(this.state)}`);
     return (
       <View flex={1} justifyContent='center' alignItems='center'>
         <Gestures.View
+          onRotation={this.onRotation}
           onPinch={this.onPinch}
           onTap={this.onTap}
           onPan={this.onPan}
-          onRotation={this.onRotation}
           style={{
-              left: this.state.baseLeft + this.state.offsetLeft,
-              top: this.state.baseTop + this.state.offsetTop,
-              backgroundColor: this.state.color ? 'yellow' : 'cyan',
-              flexDirection: 'row',
-              transform: [{rotate: `${this.state.baseRotation + this.state.offsetRotation} rad`}]
+            left: this.state.baseLeft + this.state.offsetLeft,
+            top: this.state.baseTop + this.state.offsetTop,
           }}
         >
-          <Image
-            style={{width: 100, height: 100}}
-            source={{uri: 'https://facebook.github.io/react/img/logo_og.png'}}
-          />
-          <Text style={{
-              flex:1,
-              margin: 10,
-              fontSize: this.state.baseFontSize * this.state.scale
-            }}>
-            -> pinch to change fontSize{'\n'}
-            -> tap to change bg color{'\n'}
-            -> drag to move{'\n'}
-            -> rotate to rotate
-          </Text>
+          <View
+            style={{
+              flexDirection: 'row',
+              backgroundColor: this.state.color ? 'yellow' : 'cyan',
+              transform: [{rotate: `${this.state.baseRotation + this.state.offsetRotation} rad`}]
+            }}
+          >
+            <Image
+              style={{width: 100, height: 100}}
+              source={{uri: 'https://reactjs.org/logo-og.png'}}
+            />
+            <Text style={{
+                flexWrap: 'wrap',
+                margin: 10,
+                fontSize: this.state.baseFontSize * this.state.scale
+              }}>
+              -> pinch to change fontSize{'\n'}
+              -> tap to change bg color{'\n'}
+              -> drag to move{'\n'}
+              -> rotate to rotate
+            </Text>
+          </View>
         </Gestures.View>
       </View>
     );
