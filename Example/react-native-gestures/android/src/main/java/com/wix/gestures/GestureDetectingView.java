@@ -21,6 +21,7 @@ public class GestureDetectingView extends ReactViewGroup implements OnGestureLis
   private boolean mIsScrolling = false;
   private boolean mIsDetectorEnabled = true;
   private boolean mCanInterceptTouches = true;
+  private boolean mEventWasHandled = false;
   private float mCurrentPanX;
   private float mCurrentPanY;
   private float mCurrentScale;
@@ -54,6 +55,7 @@ public class GestureDetectingView extends ReactViewGroup implements OnGestureLis
       emitPan("finish");
     }
 
+    mEventWasHandled = true;
     return isConsumed;
   }
 
@@ -66,10 +68,17 @@ public class GestureDetectingView extends ReactViewGroup implements OnGestureLis
   @Override
   public boolean dispatchTouchEvent(MotionEvent event) {
     mCanInterceptTouches = true;
+    mEventWasHandled = false;
     boolean wasConsumed = super.dispatchTouchEvent(event);
     if (mCanInterceptTouches) {
       // this ensures that the GestureDetectingView that is deepest in hierarchy handles the gesture
       getParent().requestDisallowInterceptTouchEvent(true);
+      if (!mEventWasHandled) {
+        // Somehow call to super.dispatchTouchEvent does not always call this.onTouchEvent,
+        // for example when ACTION_DOWN is immediately followed by ACTION_UP.
+        // Ensure the detectors get all events by calling onTouchEvent now.
+        onTouchEvent(event);
+      }
       wasConsumed = true;
     }
     else {
@@ -119,9 +128,14 @@ public class GestureDetectingView extends ReactViewGroup implements OnGestureLis
 
   @Override
   public boolean onSingleTapUp(MotionEvent e) {
+    return performClick();
+  }
+
+  @Override
+  public boolean performClick() {
     ReactContext reactContext = (ReactContext) getContext();
     reactContext.getJSModule(RCTEventEmitter.class).receiveEvent(getId(), "onTap", null);
-    return true;
+    return super.performClick();
   }
 
   @Override
