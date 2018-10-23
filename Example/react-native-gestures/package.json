@@ -22,7 +22,7 @@
   "readme": "",
   "peerDependencies": {
     "react": ">= 15.0.0",
-    "react-native": ">= 0.32.0"
+    "react-native": ">= 0.57.0"
   },
   "publishConfig": {
     "registry": "https://registry.npmjs.org/"
