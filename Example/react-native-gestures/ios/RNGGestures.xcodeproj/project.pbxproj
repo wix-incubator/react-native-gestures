@@ -286,9 +286,13 @@
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
 					"$(SRCROOT)/../../../React/**",
 					"$(SRCROOT)/../../react-native/React/**",
+					"\"${PODS_ROOT}/Headers/Public/Yoga\"",
+					"\"$(PODS_ROOT)/Headers/Private/React-Core\"",
+					"\"${PODS_ROOT}/Headers/Public/React-Core\"",
 				);
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				OTHER_LDFLAGS = "-ObjC";
+				PODS_ROOT = "${SRCROOT}/../../ios/Pods";
 				PRODUCT_NAME = RNGGestures;
 				SKIP_INSTALL = YES;
 			};
@@ -302,9 +306,13 @@
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
 					"$(SRCROOT)/../../../React/**",
 					"$(SRCROOT)/../../react-native/React/**",
+					"\"${PODS_ROOT}/Headers/Public/Yoga\"",
+					"\"$(PODS_ROOT)/Headers/Private/React-Core\"",
+					"\"${PODS_ROOT}/Headers/Public/React-Core\"",
 				);
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				OTHER_LDFLAGS = "-ObjC";
+				PODS_ROOT = "${SRCROOT}/../../ios/Pods";
 				PRODUCT_NAME = RNGGestures;
 				SKIP_INSTALL = YES;
 			};
