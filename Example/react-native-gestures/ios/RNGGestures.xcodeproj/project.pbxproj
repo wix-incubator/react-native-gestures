@@ -292,7 +292,7 @@
 				);
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				OTHER_LDFLAGS = "-ObjC";
-				PODS_ROOT = "${SRCROOT}/../../ios/Pods";
+				PODS_ROOT = "${SRCROOT}/../../../ios/Pods";
 				PRODUCT_NAME = RNGGestures;
 				SKIP_INSTALL = YES;
 			};
@@ -312,7 +312,7 @@
 				);
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				OTHER_LDFLAGS = "-ObjC";
-				PODS_ROOT = "${SRCROOT}/../../ios/Pods";
+				PODS_ROOT = "${SRCROOT}/../../../ios/Pods";
 				PRODUCT_NAME = RNGGestures;
 				SKIP_INSTALL = YES;
 			};
