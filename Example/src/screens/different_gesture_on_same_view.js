@@ -35,13 +35,13 @@ export default class DifferentGestureOnSameView extends Component {
           style={{
             left: this.state.baseLeft + this.state.offsetLeft,
             top: this.state.baseTop + this.state.offsetTop,
+            transform: [{rotate: `${this.state.baseRotation + this.state.offsetRotation} rad`}]
           }}
         >
           <View
             style={{
               flexDirection: 'row',
-              backgroundColor: this.state.color ? 'yellow' : 'cyan',
-              transform: [{rotate: `${this.state.baseRotation + this.state.offsetRotation} rad`}]
+              backgroundColor: this.state.color ? 'yellow' : 'cyan'
             }}
           >
             <Image
